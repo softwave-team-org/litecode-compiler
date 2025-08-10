@@ -1,0 +1,21 @@
+// Simple Repeat-When-Fixed Test
+// Basic test of the new repeat-when-fixed construct
+
+run {
+    num x = 2;
+    
+    repeat [x] {
+        when [1] {
+            @print["Case one"];
+        }
+        when [2] {
+            @print["Case two"];
+        }
+        when [3] {
+            @print["Case three"];
+        }
+        fixed {
+            @print["Default case"];
+        }
+    }
+};

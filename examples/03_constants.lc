@@ -1,0 +1,43 @@
+// Example 3: Constants with val keyword
+// Demonstrates constant declarations and usage
+
+run {
+    // Mathematical constants
+    val num PI = 3.14159;
+    val num E = 2.71828;
+    val num GOLDEN_RATIO = 1.618;
+    
+    // Configuration constants
+    val text APP_NAME = "LiteCode Calculator";
+    val text VERSION = "1.0.0";
+    val bool DEBUG_MODE = false;
+    
+    // Physical constants
+    val num SPEED_OF_LIGHT = 299792458; // m/s
+    val char DEGREE_SYMBOL = '°';
+    
+    @print["Mathematical Constants:"];
+    @print["  π (Pi): $PI"];
+    @print["  e (Euler): $E"];
+    @print["  φ (Golden Ratio): $GOLDEN_RATIO"];
+    
+    @print["Application Info:"];
+    @print["  Name: $APP_NAME"];
+    @print["  Version: $VERSION"];
+    @print["  Debug Mode: $DEBUG_MODE"];
+    
+    @print["Physical Constants:"];
+    @print["  Speed of Light: $SPEED_OF_LIGHT m/s"];
+    
+    // Using constants in calculations
+    num radius = 5;
+    num circumference = 2 * PI * radius;
+    num area = PI * radius * radius;
+    
+    @print["Circle Calculations (radius = $radius):"];
+    @print["  Circumference: $circumference"];
+    @print["  Area: $area"];
+    
+    // Constants cannot be reassigned
+    // PI = 3.14; // This would cause a compile error
+};

@@ -1,0 +1,98 @@
+// Example 12: Nested Structs and Complex Data
+// Demonstrates struct composition and nested member access
+
+struct Address {
+    text street;
+    text city;
+    text zipCode;
+};
+
+struct Employee {
+    text name;
+    num id;
+    Address address;
+    num salary;
+};
+
+struct Company {
+    text name;
+    Employee[] employees;
+    Address headquarters;
+};
+
+fnc printAddress[Address addr]:void {
+    @print["  $addr->street, $addr->city $addr->zipCode"];
+}
+
+fnc printEmployee[Employee emp]:void {
+    @print["Employee: $emp->name (ID: $emp->id)"];
+    @print["Salary: $$emp->salary"];
+    @print["Address:"];
+    @printAddress[emp->address];
+}
+
+run {
+    // Create addresses
+    Address hq = Address{
+        street: "123 Business Ave",
+        city: "Tech City",
+        zipCode: "12345"
+    };
+    
+    Address aliceAddr = Address{
+        street: "456 Oak St",
+        city: "Hometown",
+        zipCode: "67890"
+    };
+    
+    Address bobAddr = Address{
+        street: "789 Pine Rd",
+        city: "Somewhere",
+        zipCode: "54321"
+    };
+    
+    // Create employees
+    Employee alice = Employee{
+        name: "Alice Johnson",
+        id: 1001,
+        address: aliceAddr,
+        salary: 75000
+    };
+    
+    Employee bob = Employee{
+        name: "Bob Smith",
+        id: 1002,
+        address: bobAddr,
+        salary: 68000
+    };
+    
+    // Create company
+    Company techCorp = Company{
+        name: "TechCorp Inc.",
+        employees: [alice, bob],
+        headquarters: hq
+    };
+    
+    // Display company information
+    @print["Company: $techCorp->name"];
+    @print["Headquarters:"];
+    @printAddress[techCorp->headquarters];
+    
+    @print["\nEmployees:"];
+    for [num i = 0; i < 2; i = i + 1] {
+        @printEmployee[techCorp->employees[i]];
+        @print[""];
+    }
+    
+    // Direct nested member access
+    @print["Alice's city: $alice->address->city"];
+    @print["Bob's street: $bob->address->street"];
+    
+    // Update nested data
+    alice->address->city = "New Tech City";
+    alice->salary = 80000;
+    
+    @print["Updated Alice's info:"];
+    @print["New city: $alice->address->city"];
+    @print["New salary: $$alice->salary"];
+};

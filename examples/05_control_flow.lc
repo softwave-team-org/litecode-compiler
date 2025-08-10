@@ -1,0 +1,100 @@
+// Example 5: Control Flow - Conditionals
+// Demonstrates if/or/else statements and logical operators
+
+fnc classifyTemperature[num temp]:text {
+    if [temp >= 30] {
+        return "Hot";
+    } or [temp >= 20] {
+        return "Warm";
+    } or [temp >= 10] {
+        return "Cool";
+    } or [temp >= 0] {
+        return "Cold";
+    } else {
+        return "Freezing";
+    }
+}
+
+fnc canDrive[num age, bool hasLicense]:bool {
+    return age >= 16 && hasLicense;
+}
+
+run {
+    @print["Conditional Examples:"];
+    
+    // Basic if-else
+    num userAge = 25;
+    if [userAge >= 18] {
+        @print["You are an adult"];
+    } else {
+        @print["You are a minor"];
+    }
+    
+    // if-or-else chain
+    num score = 87;
+    if [score >= 90] {
+        @print["Excellent work!"];
+    } or [score >= 80] {
+        @print["Good job!"];
+    } or [score >= 70] {
+        @print["Not bad"];
+    } or [score >= 60] {
+        @print["You passed"];
+    } else {
+        @print["You failed"];
+    }
+    
+    // Logical operators
+    bool hasKey = true;
+    bool knowsPassword = false;
+    bool canAccess = hasKey || knowsPassword;
+    
+    @print["Access control:"];
+    @print["  Has key: $hasKey"];
+    @print["  Knows password: $knowsPassword"];
+    @print["  Can access: $canAccess"];
+    
+    // Complex conditions
+    num temperature = 22;
+    bool isWeekend = true;
+    bool isRaining = false;
+    
+    if [temperature > 20 && isWeekend && !!isRaining] {
+        @print["Perfect day for outdoor activities!"];
+    } or [temperature > 15 && !!isRaining] {
+        @print["Good day for a walk"];
+    } else {
+        @print["Maybe stay indoors"];
+    }
+    
+    // Nested conditionals
+    num income = 75000;
+    bool hasDependent = true;
+    
+    if [income > 50000] {
+        if [hasDependent] {
+            @print["High income with dependent - tax bracket A"];
+        } else {
+            @print["High income no dependent - tax bracket B"];
+        }
+    } else {
+        if [hasDependent] {
+            @print["Low income with dependent - tax bracket C"];
+        } else {
+            @print["Low income no dependent - tax bracket D"];
+        }
+    }
+    
+    // Using functions in conditions
+    @print["Temperature classifications:"];
+    for [num temp = -5; temp <= 35; temp = temp + 10] {
+        text classification = @classifyTemperature[temp];
+        @print["  $temp°C: $classification"];
+    }
+    
+    // Complex function with conditions
+    num driverAge = 17;
+    bool license = true;
+    bool eligible = @canDrive[driverAge, license];
+    @print["Can drive (age $driverAge, license $license): $eligible"];
+};

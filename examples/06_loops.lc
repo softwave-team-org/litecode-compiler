@@ -1,0 +1,110 @@
+// Example 6: Loops
+// Demonstrates for loops with various patterns
+
+fnc printMultiplicationTable[num n]:void {
+    @print["Multiplication table for $n:"];
+    for [num i = 1; i <= 10; i = i + 1] {
+        num result = n * i;
+        @print["  $n x $i = $result"];
+    }
+}
+
+fnc sumRange[num start, num end]:num {
+    num total = 0;
+    for [num i = start; i <= end; i = i + 1] {
+        total = total + i;
+    }
+    return total;
+}
+
+fnc printPyramid[num height]:void {
+    for [num i = 1; i <= height; i = i + 1] {
+        // Print spaces
+        for [num j = height - i; j > 0; j = j - 1] {
+            // @print[" "] would be ideal, but using text concatenation
+        }
+        // Print stars
+        for [num k = 1; k <= i; k = k + 1] {
+            // @print["*"] would be ideal
+        }
+        @print["Row $i completed"];
+    }
+}
+
+run {
+    @print["Loop Examples:"];
+    
+    // Basic counting loop
+    @print["Counting from 1 to 10:"];
+    for [num i = 1; i <= 10; i = i + 1] {
+        @print["Count: $i"];
+    }
+    
+    // Countdown loop
+    @print["Countdown from 5:"];
+    for [num i = 5; i >= 1; i = i - 1] {
+        @print["$i"];
+    }
+    @print["Blast off!"];
+    
+    // Step by different amounts
+    @print["Even numbers from 0 to 20:"];
+    for [num i = 0; i <= 20; i = i + 2] {
+        @print["Even: $i"];
+    }
+    
+    @print["Odd numbers from 1 to 15:"];
+    for [num i = 1; i <= 15; i = i + 2] {
+        @print["Odd: $i"];
+    }
+    
+    // Nested loops - multiplication table
+    @print["Mini multiplication table (1-3):"];
+    for [num i = 1; i <= 3; i = i + 1] {
+        for [num j = 1; j <= 3; j = j + 1] {
+            num product = i * j;
+            @print["$i x $j = $product"];
+        }
+    }
+    
+    // Using loops with functions
+    printMultiplicationTable[7];
+    
+    // Accumulator pattern
+    @print["Sum calculations:"];
+    num sum1to10 = sumRange[1, 10];
+    num sum5to15 = sumRange[5, 15];
+    @print["Sum 1 to 10: $sum1to10"];
+    @print["Sum 5 to 15: $sum5to15"];
+    
+    // Finding patterns
+    @print["Perfect squares up to 100:"];
+    for [num i = 1; i * i <= 100; i = i + 1] {
+        num square = i * i;
+        @print["$i² = $square"];
+    }
+    
+    // Factorial calculation using loop
+    @print["Factorials:"];
+    for [num n = 1; n <= 6; n = n + 1] {
+        num factorial = 1;
+        for [num i = 1; i <= n; i = i + 1] {
+            factorial = factorial * i;
+        }
+        @print["$n! = $factorial"];
+    }
+    
+    // Fibonacci sequence using loops
+    @print["Fibonacci sequence (first 10 terms):"];
+    num a = 0;
+    num b = 1;
+    @print["F(0) = $a"];
+    @print["F(1) = $b"];
+    
+    for [num i = 2; i < 10; i = i + 1] {
+        num next = a + b;
+        @print["F($i) = $next"];
+        a = b;
+        b = next;
+    }
+};

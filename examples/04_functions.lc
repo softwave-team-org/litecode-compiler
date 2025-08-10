@@ -1,0 +1,84 @@
+// Example 4: Functifnc formatName(text first, text last) -> text {
+    return last +>> ", " +>> first;
+}
+// Demonstrates function declaration, parameters, and return values
+
+// Function with no parameters
+fnc getCurrentYear[]:num {
+    return 2025;
+}
+
+// Function with parameters
+fnc add[num a, num b]:num {
+    return a + b;
+}
+
+// Function with constant parameters
+fnc calculateCircleArea[val num radius]:num {
+    val num PI = 3.14159;
+    return PI * radius * radius;
+}
+
+// Function returning text
+fnc formatName[text first, text last]:text {
+    return last + ", " + first;
+}
+
+// Function returning boolean
+fnc isAdult[num age]:bool {
+    val num ADULT_AGE = 18;
+    return age >= ADULT_AGE;
+}
+
+// Function with complex logic
+fnc getGrade[num score]:text {
+    if [score >= 90] {
+        return "A";
+    } or [score >= 80] {
+        return "B";
+    } or [score >= 70] {
+        return "C";
+    } or [score >= 60] {
+        return "D";
+    } else {
+        return "F";
+    }
+}
+
+// Recursive function
+fnc factorial[num n]:num {
+    if [n <= 1] {
+        return 1;
+    } else {
+        return n * @factorial[n - 1];
+    }
+}
+
+run {
+    @print["Function Examples:"];
+    
+    // Call functions with various parameters
+    num year = @getCurrentYear[];
+    num sum = @add[15, 27];
+    num area = @calculateCircleArea[7];
+    text fullName = @formatName["John", "Doe"];
+    bool canVote = @isAdult[20];
+    text grade = @getGrade[85];
+    num fact5 = @factorial[5];
+    
+    @print["Current year: $year"];
+    @print["15 + 27 = $sum"];
+    @print["Circle area (radius 7): $area"];
+    @print["Formatted name: $fullName"];
+    @print["Can vote (age 20): $canVote"];
+    @print["Grade for score 85: $grade"];
+    @print["5! = $fact5"];
+    
+    // Function calls in expressions
+    num totalArea = @calculateCircleArea[3] + @calculateCircleArea[4];
+    @print["Combined area of circles (r=3,4): $totalArea"];
+    
+    // Nested function calls
+    text studentGrade = @getGrade[@add[40, 45]];
+    @print["Grade for 40+45: $studentGrade"];
+};

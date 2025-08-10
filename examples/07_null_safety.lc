@@ -1,0 +1,154 @@
+// Example 7: Null Safety
+// Demonstrates nullable types and null checking
+
+fnc findUser[num userId]:text? {
+    // Simulate a database lookup
+    if [userId == 1] {
+        return "Alice";
+    } or [userId == 2] {
+        return "Bob";
+    } or [userId == 3] {
+        return "Charlie";
+    } else {
+        return null; // User not found
+    }
+}
+
+fnc validateAge[num? age]:bool {
+    if [age == null] {
+        return false;
+    } else {
+        return age >= 0 && age <= 150;
+    }
+}
+
+fnc getUserDisplayName[text? firstName, text? lastName]:text {
+    if [firstName != null && lastName != null] {
+        return firstName +>> " " +>> lastName;
+    } or [firstName != null] {
+        return firstName;
+    } or [lastName != null] {
+        return "Mr/Ms " + lastName;
+    } else {
+        return "Anonymous User";
+    }
+}
+
+run {
+    @print["Null Safety Examples:"];
+    
+    // Basic nullable types
+    num? optionalNumber = null;
+    text? optionalText = null;
+    char? optionalChar = null;
+    bool? optionalBool = null;
+    
+    @print["Initial nullable values:"];
+    if [optionalNumber == null] {
+        @print["  Number is null"];
+    }
+    if [optionalText == null] {
+        @print["  Text is null"];
+    }
+    
+    // Assigning values to nullable types
+    optionalNumber = 42;
+    optionalText = "Hello";
+    optionalChar = 'X';
+    optionalBool = true;
+    
+    @print["After assignment:"];
+    if [optionalNumber != null] {
+        @print["  Number: $optionalNumber"];
+    }
+    if [optionalText != null] {
+        @print["  Text: $optionalText"];
+    }
+    if [optionalChar != null] {
+        @print["  Character: $optionalChar"];
+    }
+    if [optionalBool != null] {
+        @print["  Boolean: $optionalBool"];
+    }
+    
+    // Nullable constants
+    val num? OPTIONAL_CONFIG = null;
+    val text? DEFAULT_USER = "admin";
+    
+    @print["Nullable constants:"];
+    if [OPTIONAL_CONFIG == null] {
+        @print["  Config not set"];
+    } else {
+        @print["  Config value: $OPTIONAL_CONFIG"];
+    }
+    
+    if [DEFAULT_USER != null] {
+        @print["  Default user: $DEFAULT_USER"];
+    }
+    
+    // Using functions that return nullable values
+    @print["User lookup examples:"];
+    for [num id = 1; id <= 5; id = id + 1] {
+        text? user = findUser[id];
+        if [user != null] {
+            @print["  User $id: $user"];
+        } else {
+            @print["  User $id: Not found"];
+        }
+    }
+    
+    // Null validation
+    @print["Age validation:"];
+    num?[] testAges = [null, 25, -5, 150, 200];
+    // Note: Array syntax is hypothetical for this example
+    
+    num? testAge1 = null;
+    num? testAge2 = 25;
+    num? testAge3 = -5;
+    
+    bool valid1 = validateAge[testAge1];
+    bool valid2 = validateAge[testAge2];
+    bool valid3 = validateAge[testAge3];
+    
+    @print["  null age valid: $valid1"];
+    @print["  25 age valid: $valid2"];
+    @print["  -5 age valid: $valid3"];
+    
+    // Complex null handling
+    @print["User display names:"];
+    
+    text? first1 = "John";
+    text? last1 = "Doe";
+    text display1 = getUserDisplayName[first1, last1];
+    @print["  Full name: $display1"];
+    
+    text? first2 = "Jane";
+    text? last2 = null;
+    text display2 = getUserDisplayName[first2, last2];
+    @print["  First only: $display2"];
+    
+    text? first3 = null;
+    text? last3 = "Smith";
+    text display3 = getUserDisplayName[first3, last3];
+    @print["  Last only: $display3"];
+    
+    text? first4 = null;
+    text? last4 = null;
+    text display4 = getUserDisplayName[first4, last4];
+    @print["  Neither: $display4"];
+    
+    // Safe null operations
+    num? maybeNumber = null;
+    if [maybeNumber != null] {
+        num doubled = maybeNumber * 2;
+        @print["Doubled: $doubled"];
+    } else {
+        @print["Cannot double null value"];
+    }
+    
+    maybeNumber = 21;
+    if [maybeNumber != null] {
+        num doubled = maybeNumber * 2;
+        @print["Doubled: $doubled"];
+    }
+};

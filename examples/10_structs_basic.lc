@@ -1,0 +1,43 @@
+// Example 10: Basic Structs
+// Demonstrates struct declaration, initialization, and member access
+
+struct Person {
+    text name;
+    num age;
+    bool active;
+};
+
+struct Point {
+    num x;
+    num y;
+};
+
+run {
+    // Create struct instances
+    Person alice = Person{name: "Alice", age: 25, active: true};
+    Person bob = Person{name: "Bob", age: 30, active: false};
+    
+    // Access struct members
+    @print["Person 1: $alice->name, Age: $alice->age, Active: $alice->active"];
+    @print["Person 2: $bob->name, Age: $bob->age, Active: $bob->active"];
+    
+    // Modify struct members
+    alice->age = 26;
+    bob->active = true;
+    
+    @print["Updated ages:"];
+    @print["Alice is now $alice->age years old"];
+    @print["Bob is now active: $bob->active"];
+    
+    // Create points
+    Point origin = Point{x: 0, y: 0};
+    Point destination = Point{x: 10, y: 20};
+    
+    @print["Origin: ($origin->x, $origin->y)"];
+    @print["Destination: ($destination->x, $destination->y)"];
+    
+    // Calculate distance (simple version)
+    num dx = destination->x - origin->x;
+    num dy = destination->y - origin->y;
+    @print["Distance components: dx=$dx, dy=$dy"];
+};

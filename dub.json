@@ -1,0 +1,11 @@
+{
+  "name": "litecode-compiler",
+  "description": "LiteCode Programming Language Compiler",
+  "license": "MIT",
+  "authors": [
+    "LiteCode Team"
+  ],
+  "targetType": "executable",
+  "targetName": "lcc",
+  "sourcePaths": ["source"]
+}

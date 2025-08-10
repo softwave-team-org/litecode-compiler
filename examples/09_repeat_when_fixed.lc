@@ -1,0 +1,79 @@
+// Example 9: Repeat-When-Fixed (Switch-Case equivalent)
+// Demonstrates the new repeat-when-fixed construct
+
+fnc gradeToLetter[num score]:text {
+    text letter = "F";
+    repeat [score / 10] {
+        when [10] {
+            letter = "A+";
+        }
+        when [9] {
+            letter = "A";
+        }
+        when [8] {
+            letter = "B";
+        }
+        when [7] {
+            letter = "C";
+        }
+        when [6] {
+            letter = "D";
+        }
+        fixed {
+            letter = "F";
+        }
+    }
+    return letter;
+}
+
+run {
+    @print["Grade Examples:"];
+    
+    num score1 = 95;
+    text grade1 = @gradeToLetter[score1];
+    @print["Score $score1 gets grade: $grade1"];
+    
+    num score2 = 75;
+    text grade2 = @gradeToLetter[score2];
+    @print["Score $score2 gets grade: $grade2"];
+    
+    num score3 = 45;
+    text grade3 = @gradeToLetter[score3];
+    @print["Score $score3 gets grade: $grade3"];
+    
+    // Simple repeat-when-fixed example
+    num day = 3;
+    repeat [day] {
+        when [1] {
+            @print["Monday"];
+        }
+        when [2] {
+            @print["Tuesday"];
+        }
+        when [3] {
+            @print["Wednesday"];
+        }
+        when [4] {
+            @print["Thursday"];
+        }
+        when [5] {
+            @print["Friday"];
+        }
+        fixed {
+            @print["Weekend or invalid day"];
+        }
+    }
+    
+    // Example without fixed case
+    repeat [day] {
+        when [1] {
+            @print["Weekday: Monday"];
+        }
+        when [2] {
+            @print["Weekday: Tuesday"];
+        }
+        when [3] {
+            @print["Weekday: Wednesday"];
+        }
+    }
+};

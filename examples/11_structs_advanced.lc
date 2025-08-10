@@ -1,0 +1,62 @@
+// Example 11: Advanced Structs
+// Demonstrates structs with functions and more complex operations
+
+struct Rectangle {
+    num width;
+    num height;
+    text color;
+};
+
+struct Student {
+    text name;
+    num grade;
+    bool passing;
+};
+
+fnc calculateArea[Rectangle rect]:num {
+    return rect->width * rect->height;
+}
+
+fnc updateGrade[Student student, num newGrade]:void {
+    student->grade = newGrade;
+    student->passing = newGrade >= 60;
+}
+
+fnc createDefaultStudent[text studentName]:Student {
+    return Student{name: studentName, grade: 0, passing: false};
+}
+
+run {
+    // Rectangle operations
+    Rectangle room = Rectangle{width: 12, height: 10, color: "blue"};
+    num area = @calculateArea[room];
+    
+    @print["Room dimensions: $room->width x $room->height"];
+    @print["Room color: $room->color"];
+    @print["Room area: $area square units"];
+    
+    // Student operations
+    Student[] students;
+    students[0] = @createDefaultStudent["Alice"];
+    students[1] = @createDefaultStudent["Bob"];
+    students[2] = Student{name: "Charlie", grade: 85, passing: true};
+    
+    // Update grades
+    @updateGrade[students[0], 92];
+    @updateGrade[students[1], 55];
+    
+    @print["Student Records:"];
+    for [num i = 0; i < 3; i = i + 1] {
+        Student current = students[i];
+        text status = current->passing ? "PASS" : "FAIL";
+        @print["$current->name: Grade $current->grade [$status]"];
+    }
+    
+    // Nullable struct example
+    Rectangle? optionalRect = null;
+    if [optionalRect == null] {
+        @print["Optional rectangle is null"];
+        optionalRect = Rectangle{width: 5, height: 5, color: "red"};
+        @print["Created optional rectangle: $optionalRect->color"];
+    }
+};

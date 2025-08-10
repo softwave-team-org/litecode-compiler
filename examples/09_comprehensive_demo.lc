@@ -1,0 +1,84 @@
+// Comprehensive Repeat-When-Fixed Demonstration
+// Shows various uses of the new repeat-when-fixed construct
+
+run {
+    @print["=== LiteCode Repeat-When-Fixed Demo ==="];
+    
+    // Example 1: Simple number matching
+    @print["Example 1: Basic number matching"];
+    num score = 85;
+    repeat [score / 10] {
+        when [10] {
+            @print["Perfect score!"];
+        }
+        when [9] {
+            @print["Excellent work!"];
+        }
+        when [8] {
+            @print["Good job!"];
+        }
+        when [7] {
+            @print["Not bad"];
+        }
+        fixed {
+            @print["Needs improvement"];
+        }
+    }
+    
+    // Example 2: Character codes
+    @print["Example 2: Character-based matching"];
+    num charCode = 65;  // ASCII code for 'A'
+    repeat [charCode] {
+        when [65] {
+            @print["Found letter A"];
+        }
+        when [66] {
+            @print["Found letter B"];
+        }
+        when [67] {
+            @print["Found letter C"];
+        }
+        fixed {
+            @print["Unknown character code"];
+        }
+    }
+    
+    // Example 3: Without fixed case
+    @print["Example 3: No default case"];
+    num testValue = 99;
+    repeat [testValue] {
+        when [1] {
+            @print["Value is one"];
+        }
+        when [2] {
+            @print["Value is two"];
+        }
+    }
+    @print["Continued execution after repeat"];
+    
+    // Example 4: Multiple when cases
+    @print["Example 4: Multiple matching values"];
+    num dayOfWeek = 3;
+    repeat [dayOfWeek] {
+        when [1] {
+            @print["Monday - Start of work week"];
+        }
+        when [2] {
+            @print["Tuesday - Getting into rhythm"];
+        }
+        when [3] {
+            @print["Wednesday - Midweek momentum"];
+        }
+        when [4] {
+            @print["Thursday - Almost there"];
+        }
+        when [5] {
+            @print["Friday - TGIF!"];
+        }
+        fixed {
+            @print["Weekend time!"];
+        }
+    }
+    
+    @print["=== Demo Complete ==="];
+};

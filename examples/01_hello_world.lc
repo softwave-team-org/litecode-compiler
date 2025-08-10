@@ -1,0 +1,11 @@
+// Example 1: Hello World
+// Demonstrates basic program structure and comments
+
+/? This is the classic "Hello World" program
+   showing LiteCode's basic syntax ?/
+
+run {
+    // Single line comment
+    @print["Hello, LiteCode World!"];
+    @print["Welcome to programming with LiteCode"];
+};

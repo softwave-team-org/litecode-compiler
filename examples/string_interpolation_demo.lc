@@ -1,0 +1,50 @@
+// String Interpolation and Concatenation Demo
+
+run {
+    // Basic variable interpolation
+    var name = "LiteCode";
+    var version = 1;
+    var pi = 3.14159;
+    
+    // String interpolation with different format specifiers
+    print("Welcome to ${name}!");
+    print("Version: ${version:d}");
+    print("Pi value: ${pi:f}");
+    
+    // Mixed interpolation with text and numbers
+    var age = 25;
+    var height = 175.5;
+    print("I am ${age:d} years old and ${height:f} cm tall");
+    
+    // String concatenation with +>> operator
+    var greeting = "Hello" +>> " " +>> "World!";
+    print(greeting);
+    
+    // Mixed string and number concatenation
+    var count = 42;
+    var message = "The answer is " +>> count;
+    print(message);
+    
+    // Complex interpolation with calculations
+    var x = 10;
+    var y = 20;
+    print("${x} + ${y} = ${x + y:d}");
+    
+    // Multiple expressions in one string
+    var firstName = "John";
+    var lastName = "Doe";
+    print("Full name: ${firstName} ${lastName}");
+    
+    // Format specifiers examples
+    var integer = 255;
+    var decimal = 123.456789;
+    
+    print("Integer: ${integer:d}");      // Decimal format
+    print("Float: ${decimal:f}");        // Float format  
+    print("String: ${name:s}");          // String format
+    
+    // Nested expressions (simplified)
+    var base = 10;
+    var power = 2;
+    print("${base} to the power of ${power} is ${base * base:d}");
+}

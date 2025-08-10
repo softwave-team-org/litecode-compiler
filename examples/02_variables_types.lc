@@ -1,0 +1,44 @@
+// Example 2: Variables and Data Types
+// Demonstrates all basic data types and variable usage
+
+run {
+    // Numeric type (integers and floats)
+    num wholeNumber = 42;
+    num decimalNumber = 3.14159;
+    num negativeNumber = -273;
+    
+    // Text type (strings)
+    text greeting = "Hello";
+    text name = "Alice";
+    text empty = "";
+    
+    // Character type
+    char firstLetter = 'A';
+    char symbol = '@';
+    char newline = '\n';
+    
+    // Boolean type
+    bool isTrue = true;
+    bool isFalse = false;
+    bool calculated = 10 > 5;
+    
+    // Display all values
+    @print["Numbers:"];
+    @print["  Whole: $wholeNumber"];
+    @print["  Decimal: $decimalNumber"];
+    @print["  Negative: $negativeNumber"];
+    
+    @print["Text:"];
+    @print["  Greeting: $greeting"];
+    @print["  Name: $name"];
+    @print["  Empty length: $empty (empty)"];
+    
+    @print["Characters:"];
+    @print["  Letter: $firstLetter"];
+    @print["  Symbol: $symbol"];
+    
+    @print["Booleans:"];
+    @print["  True value: $isTrue"];
+    @print["  False value: $isFalse"];
+    @print["  Calculated: $calculated"];
+};
